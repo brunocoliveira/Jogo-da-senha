@@ -5,3 +5,22 @@ body {
     color: white;
     background: linear-gradient(0deg, rgba(50,31,112,1) 0%, rgba(34,193,195,1) 100%);
 }
+div.senha {
+    text-align: center;
+}
+.campo {
+    display: inline;
+}
+.digito {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+}
+.validar {
+    display: block;
+    margin: 30px auto;
+    width: 140px;
+    height: 35px;
+    border-radius: 7px;
+}
