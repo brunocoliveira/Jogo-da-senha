@@ -3,7 +3,7 @@ body {
 	position: relative;
 	width: auto;
     color: white;
-    background: linear-gradient(0deg, rgba(50,31,112,1) 0%, rgba(34,193,195,1) 100%);
+    background: linear-gradient(0deg, rgba(50,31,112,1) 0%, rgba(34,193,195,1) 100%) no-repeat;
 }
 div.senha {
     text-align: center;
@@ -23,4 +23,11 @@ div.senha {
     width: 140px;
     height: 35px;
     border-radius: 7px;
+}
+div.tentativa {
+    text-align: center;
+    width: 35%;
+    padding: 10px 10px 20px 10px;
+    margin: 0px auto;
+    border: 1px solid black;
 }
