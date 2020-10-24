@@ -10,12 +10,24 @@ div.senha {
 }
 .campo {
     display: inline;
+    margin: -2.5px;
 }
 .digito {
+    font-size: 12pt;
+    font-weight: 700;
     text-align: center;
     width: 40px;
     height: 40px;
     border-radius: 7px;
+}
+.digitocerto {
+    color: #53FD30;
+}
+.digitoposicao {
+    color: #FDDE30;
+}
+.digitoerrado {
+    color: #FD3030;
 }
 .validar {
     display: block;
