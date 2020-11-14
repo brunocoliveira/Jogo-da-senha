@@ -12,6 +12,38 @@ div.senha {
     display: inline;
     margin: -2.5px;
 }
+.dig1 {
+    font-size: 12pt;
+    font-weight: 700;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+}
+.dig2 {
+    font-size: 12pt;
+    font-weight: 700;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+}
+.dig3 {
+    font-size: 12pt;
+    font-weight: 700;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+}
+.dig4 {
+    font-size: 12pt;
+    font-weight: 700;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+}
 .digito {
     font-size: 12pt;
     font-weight: 700;
