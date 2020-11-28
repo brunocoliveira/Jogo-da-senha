@@ -37,10 +37,10 @@
             </div>
             <button class="validar" onclick="validar()">VALIDAR SENHA</button>
         </div>
-        <div class="tentativa">
+        <div id="t1" class="tentativa">
             <h4>Tentativa 1</h4>
             <div class="campo">
-                <input class="digito" type="text" readonly>
+                <input id='t1a' class="digito" type="text" readonly>
             </div>
             <div class="campo">
                 <input class="digito" type="text" readonly>
@@ -52,7 +52,7 @@
                 <input class="digito" type="text" readonly>
             </div>
         </div>
-        <div class="tentativa"> 
+        <div id="t2" class="tentativa"> 
             <h4>Tentativa 2</h4>
             <div class="campo">
                 <input class="digito" type="text" readonly>
@@ -180,30 +180,31 @@
             });
 
             function validar() {
-                    var inputs=[1,2,3,4];
-                    var dig= (inputs.substr(0,1));
-
+                    var inputs= document.querySelectorAll(".senha input")
+                    //var dig= (inputs.sub(0,1))
+                    //Como buscar o primeiro elemento de uma string
                     
                     inputs.forEach( function(dig) {
                         
                     //var dig1 = document.getElementByClassName('dig1')
-                    //Como buscar o primeiro elemento de uma string
-
-                    if (dig.value === 1) {
-                        element.style.backgroundColor = '#53FD30'; 
-                    //Se a comparação for verdadeira vou usar a classe verde
                     
-                    } else if (false) { 
+                    if (dig.value == 1) {
+                        document.getElementById('t1').style.display  ='block'
+                        document.getElementById('t1a').style.backgroundColor = '#53FD30'; 
+                    //Se a comparação for verdadeira vou usar a classe verde dig.style.backgroundColor = '#53FD30';
+                    
+                    } else if (false) {
                     //Verificar se o elemento pertence a senha, ou seja se está em uma das quatro posições
                     //Se essa comparação for verdadeira vou usar a classe amarela
                     
                     } else {
-                        element.style.backgroundColor = '#FD3030';
+                        dig.style.backgroundColor = '#FD3030';
                     //Se a comparação for falsa vou usar a classe vermelha
 
                     }
                 })
 
+                // tentativas: esconder no html ou usar dentro do js
                 //Depois de executar esses passos, caso a senha esteja incorreta, a div tentativa 1 é preenchida com os números digitados, e com as respectivas cores.
                 //E por último, os inputs devem ser limpos para que uma nova tentativa seja realizada.
                 //Caso a senha esteja correta, ativar mensagem GANHOU, alterar botão Validar senha pra Jogar novamente

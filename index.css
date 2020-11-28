@@ -5,6 +5,9 @@ body {
     color: white;
     background: linear-gradient(0deg, rgba(50,31,112,1) 0%, rgba(34,193,195,1) 100%) no-repeat;
 }
+.tentativa {
+    display: none;
+}
 div.senha {
     text-align: center;
 }
