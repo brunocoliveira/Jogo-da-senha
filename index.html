@@ -43,13 +43,13 @@
                 <input id='t1a' class="digito" type="text" readonly>
             </div>
             <div class="campo">
-                <input class="digito" type="text" readonly>
+                <input id='t2a' class="digito" type="text" readonly>
             </div>
             <div class="campo">
-                <input class="digito" type="text" readonly>
+                <input id='t3a' class="digito" type="text" readonly>
             </div>
             <div class="campo">
-                <input class="digito" type="text" readonly>
+                <input id='t4a' class="digito" type="text" readonly>
             </div>
         </div>
         <div id="t2" class="tentativa"> 
@@ -184,13 +184,15 @@
                     //var dig= (inputs.sub(0,1))
                     //Como buscar o primeiro elemento de uma string
                     
-                    inputs.forEach( function(dig) {
-                        
+                    inputs.forEach( function(dig, index) {
+                        index=index+1
                     //var dig1 = document.getElementByClassName('dig1')
-                    
                     if (dig.value == 1) {
-                        document.getElementById('t1').style.display  ='block'
-                        document.getElementById('t1a').style.backgroundColor = '#53FD30'; 
+                        document.getElementById('t'+index+'a').style.backgroundColor = '#53FD30';
+                    
+                    //Outra maneira de verificar a posição do array
+                       document.getElementById('t1').querySelectorAll('input')[index]
+                       document.getElementById('t1').querySelectorAll('input').get(index) 
                     //Se a comparação for verdadeira vou usar a classe verde dig.style.backgroundColor = '#53FD30';
                     
                     } else if (false) {
@@ -199,10 +201,12 @@
                     
                     } else {
                         dig.style.backgroundColor = '#FD3030';
+                        
                     //Se a comparação for falsa vou usar a classe vermelha
 
                     }
                 })
+                document.getElementById('t1').style.display  ='block'
 
                 // tentativas: esconder no html ou usar dentro do js
                 //Depois de executar esses passos, caso a senha esteja incorreta, a div tentativa 1 é preenchida com os números digitados, e com as respectivas cores.
