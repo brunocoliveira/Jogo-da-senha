@@ -175,6 +175,13 @@
 
         <script>
             let senha = '1548'
+
+            function pertence (value, senhaArray) {
+                resultado = senhaArray.some (function (senhaArray)  {
+                    return this == senhaArray;
+                },value); 
+                return resultado
+            }
             
             function validar() {
                     var senhaArray = senha.split('')
@@ -185,16 +192,17 @@
                     inputs.forEach( function(dig, index) {
                         index=index+1
                     //var dig1 = document.getElementByClassName('dig1')
-                    document.getElementById('t'+index+'a').value=dig.value
+                        document.getElementById('t'+index+'a').value=dig.value
                     
                     if (dig.value == senhaArray[index-1]) {
                         document.getElementById('t'+index+'a').style.backgroundColor = '#53FD30';
-                    //Outra maneira de verificar a posição do array
+                    //Outras maneiras de verificar a posição do array
                     //  document.getElementById('t1').querySelectorAll('input')[index]
                     //  document.getElementById('t1').querySelectorAll('input').get(index) 
                     //Se a comparação for verdadeira vou usar a classe verde dig.style.backgroundColor = '#53FD30';
                     
-                    } else if (false) {
+                    } else if (pertence(dig.value, senhaArray)) {
+                        document.getElementById('t'+index+'a').style.backgroundColor = '#FDDE30'
                     //Verificar se o elemento pertence a senha, ou seja se está em uma das quatro posições
                     //Se essa comparação for verdadeira vou usar a classe amarela
                     
