@@ -188,87 +188,59 @@
 
             function pertence (value, senhaArray) {
                 resultado = senhaArray.some (function (senhaArray)  {
-                    return this == senhaArray;
+                return this == senhaArray;
                 },value); 
                 return resultado
             }
-            
-                    function validar() {
-                        let tentAtual = document.getElementById('t'+ tentativa)
-                        var senhaArray = senha.split('')
-                        var inputs = document.querySelectorAll(".senha input")
-                        //var dig= (inputs.sub(0,1))
-                        //Como buscar o primeiro elemento de uma string
+
+            function validar() {
+                let tentAtual = document.getElementById('t'+ tentativa)
+                let senhaArray = senha.split('')
+                let inputs = document.querySelectorAll(".senha input")
+                let senhaCerta = true
+
+                inputs.forEach( function(dig, index) {
+                    index=index+1
+                        tentAtual.querySelector('#t'+index+'a').value=dig.value
+
+                    if (dig.value == senhaArray[index-1]) {
+                        tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#53FD30'
                         
-                        inputs.forEach( function(dig, index) {
-                            index=index+1
-                                tentAtual.querySelector('#t'+index+'a').value=dig.value
-
-                            if (dig.value == senhaArray[index-1]) {
-                                tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#53FD30';
-                            //Outras maneiras de verificar a posição do array
-                            //  document.getElementById('t1').querySelectorAll('input')[index]
-                            //  document.getElementById('t1').querySelectorAll('input').get(index) 
-                            //Se a comparação for verdadeira vou usar a classe verde dig.style.backgroundColor = '#53FD30';
-                            
-                            } else if (pertence(dig.value, senhaArray)) {
-                                tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#FDDE30'
-                            //Verificar se o elemento pertence a senha, ou seja se está em uma das quatro posições
-                            //Se essa comparação for verdadeira vou usar a classe amarela
-                            
-                            } else {
-                                tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#FD3030';
-                            //Se a comparação for falsa vou usar a classe vermelha
-
-                            }
-                        })
+                    } else if (pertence(dig.value, senhaArray)) {
+                        tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#FDDE30'
+                        senhaCerta = false
                     
+                    } else {
+                        tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#FD3030'
+                        senhaCerta = false
 
-                    tentAtual.style.display  ='block'
+                    }
+                })
 
-                    // tentativas: esconder no html ou usar dentro do js
-                    //Depois de executar esses passos, caso a senha esteja incorreta, a div tentativa 1 é preenchida com os números digitados, e com as respectivas cores.
-                    //E por último, os inputs devem ser limpos para que uma nova tentativa seja realizada.
-                    //Caso a senha esteja correta, ativar mensagem GANHOU, alterar botão Validar senha pra Jogar novamente
-                    //Quando clicar no botão Jogar novamente, restaurar o jogo a tela inicial, com os campos vazios
+                tentAtual.style.display  ='block'
                 
-                    tentativa++
+                tentativa++
+                
+                /*if (tentAtual.#t1a.style.backgroundColor == '#53FD30') {
+                    window.alert('ACERTÔ MISERAVI!')
+                }*/
+
+                /*if (inputs == '#53FD30') {
+                    window.alert('ACERTÔ MISERAVI!')
+                }*/
+                
+                /*if (inputs.style.backgroundColor == '#53FD30') {
+                    window.alert('ACERTÔ MISERAVI!')
+                }*/
+
+                if (senhaCerta == true) {
+                    window.alert('ACERTÔ MISERAVI!')
                 }
 
-
-
-            /*
-            ==Tentando fazer a comparação entre os números digitados e valor da variável senha==
-            
-            var valid = document.getElementsByClassName('validar')
-            valid.addEventListener('click', clicar)
-
-            function clicar() {
-                valid.style.background = 'green'
-            }
-            
-            */
-
-
-            /*
-            ==Tentando fazer a comparação entre os números digitados e valor da variável senha==
-
-            var check = document.getElementsByClassName('senha')
-            check.addEventListener(== 'senha')
-            */
-
-
-            /*
-            ==Tentando formatar o input pra receber somente números==
-            
-            function soNumero(dig){
-                    if((dig>=0 && dig<=9)) return true;
-                    else{
-                    return false;
+                if (tentAtual.id == 't9') {
+                    window.alert('ERRROOUUU!!!')
                 }
             }
-            
-            */           
         </script>
     </body>
 </html>
