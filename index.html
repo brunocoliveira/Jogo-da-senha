@@ -221,14 +221,32 @@
                 
                 tentativa++
                 
+                var botao = document.querySelector('.validar');
+                
                 if (senhaCerta == true) {
                     window.alert('ACERTÔ MISERAVI!')
+                    botao.innerText = 'REINICIAR JOGO'
                 }
 
                 if (tentAtual.id == 't9') {
                     window.alert('ERRROOUUU!!!')
+                    botao.innerText = 'REINICIAR JOGO'
                 }
+                
             }
+
+            button.addEventListener("click",reiniciar)
+            button.removeEventListener("click")
+
+            function reiniciar () {
+                var limpar = document.getElementsByClassName('.campo');
+                
+                limpar.value ='none'
+                limpar.style.display ='none'
+                
+                tentativa = 1;
+            }
+
         </script>
     </body>
 </html>
