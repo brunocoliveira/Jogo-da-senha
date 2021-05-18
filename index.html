@@ -35,7 +35,7 @@
             <div class="campo">
                 <input class='dig4' type="text" maxlength="1" min="0" max="9">
             </div>
-            <button class="validar" onclick="validar()">VALIDAR SENHA</button>
+            <button class="validar">VALIDAR SENHA</button>
         </div>
         
         <div id="t1" class="tentativa">
@@ -185,7 +185,10 @@
         <script>
             let senha = '1548'
             let tentativa = 1
+            let botao = document.querySelector('.validar');
 
+            botao.addEventListener("click",validar)
+            
             function pertence (value, senhaArray) {
                 resultado = senhaArray.some (function (senhaArray)  {
                 return this == senhaArray;
@@ -221,30 +224,37 @@
                 
                 tentativa++
                 
-                var botao = document.querySelector('.validar');
-                
                 if (senhaCerta == true) {
                     window.alert('ACERTÔ MISERAVI!')
                     botao.innerText = 'REINICIAR JOGO'
+
+                    botao.addEventListener("click",reiniciar)
+                    botao.removeEventListener("click",validar)
+                    //botao.onclick = ""
                 }
 
                 if (tentAtual.id == 't9') {
                     window.alert('ERRROOUUU!!!')
                     botao.innerText = 'REINICIAR JOGO'
+                    
+                    botao.addEventListener("click",reiniciar)
+                    botao.removeEventListener("click",validar)
+                    //botao.onclick = ""
                 }
                 
             }
 
-            button.addEventListener("click",reiniciar)
-            button.removeEventListener("click")
-
             function reiniciar () {
-                var limpar = document.getElementsByClassName('.campo');
+                let campos = document.getElementsByClassName('.campo')
+                let camposArray = campos.split('')
+                                
+                campos.forEach( function(dig) {
+
+                    campos.value = null
+                    campos.style.display = 'none'
                 
-                limpar.value ='none'
-                limpar.style.display ='none'
-                
-                tentativa = 1;
+                    tentativa = 1;
+                })
             }
 
         </script>
