@@ -245,16 +245,20 @@
             }
 
             function reiniciar () {
-                let campos = document.getElementsByClassName('.campo')
-                let camposArray = campos.split('')
+                let campos = document.getElementByClassName (".tentativa")
                                 
-                campos.forEach( function(dig) {
-
-                    campos.value = null
+                campos.forEach( function(tentativa, index) {
+                    index = index+1
                     campos.style.display = 'none'
-                
-                    tentativa = 1;
+
                 })
+
+                /*campos.forEach( function() {
+                    campos.value = null
+
+                })*/
+                    
+                tentativa = 1;
             }
 
         </script>
