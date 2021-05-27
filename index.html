@@ -183,11 +183,15 @@
         </div>
 
         <script>
-            let senha = '1548'
+            let senha = ''
             let tentativa = 1
             let botao = document.querySelector('.validar');
 
             botao.addEventListener("click",validar)
+
+            document.addEventListener('DOMContentLoaded', function () {
+                senha = senhaNova();
+            })
             
             function pertence (value, senhaArray) {
                 resultado = senhaArray.some (function (senhaArray)  {
@@ -264,6 +268,37 @@
                 botao.removeEventListener("click",reiniciar)
                 botao.innerText = 'VALIDAR SENHA'
 
+                senhaNova();
+
+            }
+
+            function senhaNova() {
+                
+                Math.random().toString(36).substr(2, 4)
+                
+                /*
+                const randomPass = len => {
+                    let nova = '';
+                    
+                    do{
+                        nova += Math.random().toString(36).substr(2)
+                    }   while(nova.length < len)
+                    nova = nova.substr(0, len)
+                    
+                    return nova
+                }
+                /*
+
+                function getRandomIntInclusive(min, max) {
+                    min = Math.ceil(min);
+                    max = Math.floor(max);
+                    
+                    return Math.floor(Math.random() * 10 + 1);
+                }
+                */
+                nova = '';
+
+                return nova;
             }
 
         </script>
