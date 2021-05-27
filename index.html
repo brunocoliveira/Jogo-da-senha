@@ -245,21 +245,25 @@
             }
 
             function reiniciar () {
-                let esconde = document.getElementById('t'+tentativa)
-                let limpa = document.getElementClassName(".campo")
+                let escondes = document.querySelectorAll('.tentativa');
+                let inputs = document.querySelectorAll(".campo input")
                                 
-                esconde.forEach ( function() {
+                escondes.forEach ( function(esconde) {
                     esconde.style.display = 'none'
 
                 })
 
-                limpa.forEach ( function() {
-                    index = index+1
-                    limpa.querySelector('#t'+index+'a').value = null
+                inputs.forEach ( function(input) {
+                    input.value = null
 
                 })
                     
                 tentativa = 1;
+
+                botao.addEventListener("click",validar)
+                botao.removeEventListener("click",reiniciar)
+                botao.innerText = 'VALIDAR SENHA'
+
             }
 
         </script>
