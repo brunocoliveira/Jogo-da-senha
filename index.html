@@ -268,39 +268,26 @@
                 botao.removeEventListener("click",reiniciar)
                 botao.innerText = 'VALIDAR SENHA'
 
-                senhaNova();
+                senha = senhaNova();
 
             }
 
             function senhaNova() {
                 
-                Math.random().toString(36).substr(2, 4)
-                
-                /*
-                const randomPass = len => {
-                    let nova = '';
+                let nova = '';
+                                                            
+                do{
+                    nova += Math.random().toString(10).substr(2, 4)
+                    /*if (nova.indexOf(nova) == -1)
+                    nova.push(senhaNova);                          // adiciona este numero a string
+                    */
+                }   while(nova.length < 4)
                     
-                    do{
-                        nova += Math.random().toString(36).substr(2)
-                    }   while(nova.length < len)
-                    nova = nova.substr(0, len)
+                nova = nova.substr(0, 4)
                     
-                    return nova
-                }
-                /*
-
-                function getRandomIntInclusive(min, max) {
-                    min = Math.ceil(min);
-                    max = Math.floor(max);
-                    
-                    return Math.floor(Math.random() * 10 + 1);
-                }
-                */
-                nova = '';
-
-                return nova;
+                return nova
             }
-
+                                
         </script>
     </body>
 </html>
