@@ -277,10 +277,14 @@
                 let nova = '';
                                                             
                 do{
-                    nova += Math.random().toString(10).substr(2, 4)
-                    /*if (nova.indexOf(nova) == -1)
-                    nova.push(senhaNova);                          // adiciona este numero a string
-                    */
+                    nova += Math.random().toString(10).substr(2, 1)
+                    
+                    let compar = nova.includes(nova);
+                        
+                    if (compar = false) {
+                        nova.push(senhaNova)                    // adiciona este numero a string
+                    }
+                    
                 }   while(nova.length < 4)
                     
                 nova = nova.substr(0, 4)
