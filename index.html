@@ -186,6 +186,71 @@
             let senha = ''
             let tentativa = 1
             let botao = document.querySelector('.validar');
+            
+
+
+
+
+
+            let diginums = document.querySelectorAll(".senha input")
+            let num = ['0','1','2','3','4','5','6','7','8','9']
+            //let num = '0123456789'
+            //let num = "[0-9]+$"
+            let verifica = false
+
+            /* PRIMEIRA TENTATIVA
+            diginums.forEach ( function (diginum) {
+
+                diginum.addEventListener("keydown", function (event)  {
+                    console.log(event)
+
+                    if (diginum == num) {
+                        return event.key
+
+                    }else {
+                        diginum.value = null
+                    }
+                })
+           
+            })
+            */
+            
+
+            // SEGUNDA TENTATIVA
+            diginums.forEach ( function (diginum) {
+
+                diginum.addEventListener("keydown", function (event)  {
+                console.log(event)
+                    
+                    if (event.key == 'Tab') {
+                        return
+                    }
+
+                    if (event.key == 'Shift') {
+                        return
+                    }
+
+                    event.preventDefault()
+                    
+                    verifica = num.includes(event.key);
+
+                        if (verifica == true) {
+                            this.value = event.key
+                        
+                        } else {
+                            this.value = null
+                    }
+                    
+                })
+            })
+            
+                
+            
+
+                        
+
+
+
 
             botao.addEventListener("click",validar)
 
@@ -205,6 +270,30 @@
                 let senhaArray = senha.split('')
                 let inputs = document.querySelectorAll(".senha input")
                 let senhaCerta = true
+                let vazio = false 
+
+                inputs.forEach( function(dig, index) {
+                    index=index+1
+                       tentAtual.querySelector('#t'+index+'a').value=dig.value
+
+                    if (dig.value == "") {
+                        vazio = true
+                    }
+                })
+                
+                if (vazio == true) {
+                    window.alert('PREENCHA TODOS OS CAMPOS')
+                    return
+                }
+
+                /*inputs.forEach( function(dig, index) {
+                    index=index+1
+                       tentAtual.querySelector('#t'+index+'a').value=dig.value
+
+                    if () {
+                        window.alert('OS NÚMEROS NÃO PODEM SE REPETIR')
+                    }
+                })*/
 
                 inputs.forEach( function(dig, index) {
                     index=index+1
@@ -275,19 +364,22 @@
             function senhaNova() {
                 
                 let nova = '';
+                let numNovo = '';
+                let compar = '';
                                                             
                 do{
-                    nova += Math.random().toString(10).substr(2, 1)
+                    numNovo = Math.random().toString(10).substr(2, 1);
                     
-                    let compar = nova.includes(nova);
+                    compar = nova.includes(numNovo);
                         
-                    if (compar = false) {
-                        nova.push(senhaNova)                    // adiciona este numero a string
+                    if (compar == false) {
+                        nova += numNovo                    // adiciona este numero a string
                     }
+
                     
                 }   while(nova.length < 4)
                     
-                nova = nova.substr(0, 4)
+                nova = nova.substr(0, 4)        //a função substr (nesse caso) vai pegar 4 termos da string, começando pelo termo 0
                     
                 return nova
             }
