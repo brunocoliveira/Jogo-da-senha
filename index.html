@@ -286,14 +286,21 @@
                     return
                 }
 
-                /*inputs.forEach( function(dig, index) {
-                    index=index+1
-                       tentAtual.querySelector('#t'+index+'a').value=dig.value
+                let repetido = false
 
-                    if () {
-                        window.alert('OS NÚMEROS NÃO PODEM SE REPETIR')
+                for (count = 0; count < inputs.length; count++) {
+                    for (count2 = 1; count2 < inputs.length; count2++) {
+
+                        if (inputs[count].value == inputs[count2].value) {
+                            repetido =true
+                        }
                     }
-                })*/
+                }
+                
+                if (repetido == true) {
+                    window.alert('OS NÚMEROS NÃO PODEM SE REPETIR')
+                    return
+                }
 
                 inputs.forEach( function(dig, index) {
                     index=index+1
