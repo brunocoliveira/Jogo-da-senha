@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		<meta charset="UTF-8"/>
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Jogo da Senha</title>
-		<link rel="stylesheet" href="index.css"/>
+		<link rel="stylesheet" href="index.css">
 	</head>
-
 	<body>
         <h1>A Senha</h1>
         <h2>Descubra qual é a senha misteriosa!</h2>
         <h3>Regras:</h3>
-            <ul>
-                <li>Você deve escolher uma sequência de 4 números distintos de 0 a 9</li>            
-                    <li>Ao clicar em validar, o jogo te dará dicas da sua senha informada, as dicas podem ser:
+        <ul>
+            <li>Você deve escolher uma sequência de 4 números distintos de 0 a 9</li>            
+            <li>Ao clicar em validar, o jogo te dará dicas da sua senha informada, as dicas podem ser:
                         <ul><li>Verde: o número está correto e está na posição certa</li>
                             <li>Amarelo: o número está correto mas está na posição errada</li>
                             <li>Vermelho: o número está errado</li>
@@ -186,42 +185,34 @@
             let senha = ''
             let tentativa = 1
             let botao = document.querySelector('.validar');
-            
-
-
-
-
-
+                
             let diginums = document.querySelectorAll(".senha input")
             let num = ['0','1','2','3','4','5','6','7','8','9']
-            //let num = '0123456789'
-            //let num = "[0-9]+$"
             let verifica = false
 
             /* PRIMEIRA TENTATIVA
             diginums.forEach ( function (diginum) {
 
-                diginum.addEventListener("keydown", function (event)  {
-                    console.log(event)
+            diginum.addEventListener("keydown", function (event)  {
+                console.log(event)
 
-                    if (diginum == num) {
-                        return event.key
+                if (diginum == num) {
+                    return event.key
 
                     }else {
                         diginum.value = null
                     }
                 })
-           
+            
             })
             */
-            
-
+                
             // SEGUNDA TENTATIVA
             diginums.forEach ( function (diginum) {
 
                 diginum.addEventListener("keydown", function (event)  {
-                console.log(event)
-                    
+                    console.log(event)
+                            
                     if (event.key == 'Tab') {
                         return
                     }
@@ -231,33 +222,25 @@
                     }
 
                     event.preventDefault()
-                    
+                                
                     verifica = num.includes(event.key);
 
-                        if (verifica == true) {
-                            this.value = event.key
-                        
-                        } else {
-                            this.value = null
+                    if (verifica == true) {
+                        this.value = event.key
+                                    
+                    } else {
+                        this.value = null
                     }
-                    
+                            
                 })
             })
-            
-                
-            
-
-                        
-
-
-
 
             botao.addEventListener("click",validar)
 
             document.addEventListener('DOMContentLoaded', function () {
                 senha = senhaNova();
             })
-            
+                
             function pertence (value, senhaArray) {
                 resultado = senhaArray.some (function (senhaArray)  {
                 return this == senhaArray;
@@ -274,13 +257,13 @@
 
                 inputs.forEach( function(dig, index) {
                     index=index+1
-                       tentAtual.querySelector('#t'+index+'a').value=dig.value
+                        tentAtual.querySelector('#t'+index+'a').value=dig.value
 
                     if (dig.value == "") {
                         vazio = true
                     }
                 })
-                
+                    
                 if (vazio == true) {
                     window.alert('PREENCHA TODOS OS CAMPOS')
                     return
@@ -288,109 +271,108 @@
 
                 let repetido = false
 
-                for (count = 0; count < inputs.length; count++) {
-                    for (count2 = 1; count2 < inputs.length; count2++) {
+                for (count = 0; repetido == false && count < inputs.length; count++) {
 
+                    for (count2 = count+1; count2 < inputs.length; count2++) {
+                        console.count()
+                    
                         if (inputs[count].value == inputs[count2].value) {
-                            repetido =true
+                            repetido = true
+                            break
                         }
                     }
                 }
-                
+                    
                 if (repetido == true) {
                     window.alert('OS NÚMEROS NÃO PODEM SE REPETIR')
                     return
                 }
 
-                inputs.forEach( function(dig, index) {
-                    index=index+1
-                        tentAtual.querySelector('#t'+index+'a').value=dig.value
+            inputs.forEach( function(dig, index) {
+                index=index+1
+                    tentAtual.querySelector('#t'+index+'a').value=dig.value
 
-                    if (dig.value == senhaArray[index-1]) {
-                        tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#53FD30'
+                if (dig.value == senhaArray[index-1]) {
+                    tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#53FD30'
                         
                     } else if (pertence(dig.value, senhaArray)) {
-                        tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#FDDE30'
-                        senhaCerta = false
+                    tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#FDDE30'
+                    senhaCerta = false
                     
                     } else {
-                        tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#FD3030'
-                        senhaCerta = false
+                    tentAtual.querySelector('#t'+index+'a').style.backgroundColor = '#FD3030'
+                    senhaCerta = false
 
-                    }
-                })
-
-                tentAtual.style.display  ='block'
-                
-                tentativa++
-                
-                if (senhaCerta == true) {
-                    window.alert('ACERTÔ MISERAVI!')
-                    botao.innerText = 'REINICIAR JOGO'
-
-                    botao.addEventListener("click",reiniciar)
-                    botao.removeEventListener("click",validar)
-                    //botao.onclick = ""
                 }
+            })
 
-                if (tentAtual.id == 't9') {
-                    window.alert('ERRROOUUU!!!')
-                    botao.innerText = 'REINICIAR JOGO'
-                    
-                    botao.addEventListener("click",reiniciar)
-                    botao.removeEventListener("click",validar)
-                    //botao.onclick = ""
-                }
+            tentAtual.style.display  ='block'
                 
+            tentativa++
+                
+            if (senhaCerta == true) {
+                window.alert('ACERTÔ MISERAVI!')
+                botao.innerText = 'REINICIAR JOGO'
+
+                botao.addEventListener("click",reiniciar)
+                botao.removeEventListener("click",validar)
             }
 
-            function reiniciar () {
-                let escondes = document.querySelectorAll('.tentativa');
-                let inputs = document.querySelectorAll(".campo input")
+            if (tentAtual.id == 't9') {
+                window.alert('ERRROOUUU!!!')
+                botao.innerText = 'REINICIAR JOGO'
+                    
+                botao.addEventListener("click",reiniciar)
+                botao.removeEventListener("click",validar)
+            }
+        }
+
+        function reiniciar () {
+            let escondes = document.querySelectorAll('.tentativa');
+            let inputs = document.querySelectorAll(".campo input")
                                 
-                escondes.forEach ( function(esconde) {
-                    esconde.style.display = 'none'
+            escondes.forEach ( function(esconde) {
+                esconde.style.display = 'none'
 
-                })
+            })
 
-                inputs.forEach ( function(input) {
-                    input.value = null
+            inputs.forEach ( function(input) {
+                input.value = null
 
-                })
+            })
                     
-                tentativa = 1;
+            tentativa = 1;
 
-                botao.addEventListener("click",validar)
-                botao.removeEventListener("click",reiniciar)
-                botao.innerText = 'VALIDAR SENHA'
+            botao.addEventListener("click",validar)
+            botao.removeEventListener("click",reiniciar)
+            botao.innerText = 'VALIDAR SENHA'
 
-                senha = senhaNova();
+            senha = senhaNova();
 
-            }
+        }
 
-            function senhaNova() {
+        function senhaNova() {
                 
-                let nova = '';
-                let numNovo = '';
-                let compar = '';
+            let nova = '';
+            let numNovo = '';
+            let compar = '';
                                                             
-                do{
-                    numNovo = Math.random().toString(10).substr(2, 1);
+            do{
+                numNovo = Math.random().toString(10).substr(2, 1);
                     
-                    compar = nova.includes(numNovo);
+                compar = nova.includes(numNovo);
                         
-                    if (compar == false) {
-                        nova += numNovo                    // adiciona este numero a string
-                    }
+                if (compar == false) {
+                    nova += numNovo                    // adiciona este numero a string
+                }
 
+            }   while(nova.length < 4)
                     
-                }   while(nova.length < 4)
+            nova = nova.substr(0, 4)        //a função substr (nesse caso) vai pegar 4 termos da string, começando pelo termo 0
                     
-                nova = nova.substr(0, 4)        //a função substr (nesse caso) vai pegar 4 termos da string, começando pelo termo 0
-                    
-                return nova
-            }
+            return nova
+        }
                                 
-        </script>
+    </script>
     </body>
 </html>
